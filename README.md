@@ -1,32 +1,32 @@
-# Автоматическое развертывание Docker Swarm кластера
-Для развертывания устанавливается и используется Edge-версия Docker
-Кластер разворачивается в конфигурации N-мастеров, N-воркеров
-Хосты, которые уже участвуют в Swarm-кластерах не будут включены в обработку
+# Auto deployment of Docker Swarm (multimanager) cluster (including docker installation)
+Edge version of docker will be used for cluster deployment 
+Docker cluster will be deployed with N-managers, N-workers
+Hosts are used in swarm-cluster already will be skipped 
 
-## Требования к участникам кластера:
+## Swarm hosts requirements:
 * CentOS \ RedHat
-* Доступ в Интернет для YUM
+* Internet connection (to get packages from repos)
 
-## Требования к серверу развертывания:
-* Ansible v2.4 (или новее)
-* Jinja 2.9 (или новее)
-* Ssh ключи должны быть скопированы на все серверы будущего кластера
+## Ansible host requirements:
+* Ansible v2.4 (or newer)
+* Jinja 2.9 (or newer)
+* Ssh-keys should be copied to all hosts of your invertory (ssh-copy-id can be used)
 
-## Запуск ANSIBLE-PLAYBOOK
+## Running ANSIBLE-PLAYBOOK
 ```
 $ sudo ansible-playbook ./swarm-cluster.yml
 ```
-Доступен параметр http_proxy, для настройки прокси для docker
+http_proxy parameter is available, to setting up proxy for docker
 ```
 $ sudo ansible-playbook -e http_proxy=your-proxy-ip-or-name:your-port ./swarm-cluster.yml
 ```
 
-Файл с настройками по умолчания
+Default config file:
 ./ansible.cfg
 
-Настройки по умолчанию:
-* Список хостов (invertory-файл): "inventory = ./invertory.cfg" 
-* Пользователь под которым выполняются команды на хостах: "remote_user = root"
+Default settings:
+* List of hosts (invertory-file): "inventory = ./invertory.cfg" 
+* User on hosts: "remote_user = root"
 
-## Документация по Docker Swarm
+## Official Docker Swarm documentation
 https://docs.docker.com/engine/swarm/swarm-tutorial
