@@ -1,7 +1,10 @@
 # Auto deployment of Docker Swarm (multimanager) cluster (including docker installation)
 Edge version of docker will be used for cluster deployment 
+
 Docker cluster will be deployed with N-managers, N-workers
+
 Hosts are used in swarm-cluster already will be skipped 
+
 
 ## Swarm hosts requirements:
 * CentOS \ RedHat
